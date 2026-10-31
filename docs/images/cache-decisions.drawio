@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Action decision — content, not timestamps" id="cache-decisions">
+    <mxGraphModel page="1" pageWidth="1200" pageHeight="570">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Action decision — content, not timestamps" style="text;html=0;align=center;verticalAlign=top;fontSize=24;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="350.0" y="4" width="500" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Fingerprint inputs&#10;Command + tools + env" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="30" y="175" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Output + prior state match?" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="350" y="80" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" style="edgeStyle=none;html=0;endArrow=block;endFill=1;strokeColor=#222222;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="220" as="sourcePoint" />
+            <mxPoint x="350" y="120" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="305" y="220" />
+              <mxPoint x="305" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="Reuse existing output" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="930" y="80" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" style="edgeStyle=none;html=0;endArrow=block;endFill=1;strokeColor=#222222;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="120" as="sourcePoint" />
+            <mxPoint x="930" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="yes" style="text;html=0;align=center;verticalAlign=top;fontSize=15;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="520" y="88" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Verified action cache hit?" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="350" y="275" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="10" style="edgeStyle=none;html=0;endArrow=block;endFill=1;strokeColor=#222222;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="160" as="sourcePoint" />
+            <mxPoint x="485" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="no" style="text;html=0;align=center;verticalAlign=top;fontSize=15;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="260" y="210" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Restore cached artifact" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="930" y="275" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="13" style="edgeStyle=none;html=0;endArrow=block;endFill=1;strokeColor=#222222;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="315" as="sourcePoint" />
+            <mxPoint x="930" y="315" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="yes" style="text;html=0;align=center;verticalAlign=top;fontSize=15;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="520" y="283" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Run compiler / archiver / linker" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="350" y="440" width="270" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="16" style="edgeStyle=none;html=0;endArrow=block;endFill=1;strokeColor=#222222;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="355" as="sourcePoint" />
+            <mxPoint x="485" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="no" style="text;html=0;align=center;verticalAlign=top;fontSize=15;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="260" y="390" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="Recheck input content&#10;Atomically publish output&#10;Write cache + state" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#222222;fontColor=#111111;fontFamily=Arial;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="930" y="430" width="240" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="19" style="edgeStyle=none;html=0;endArrow=block;endFill=1;strokeColor=#222222;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="472" as="sourcePoint" />
+            <mxPoint x="930" y="472" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="Fresh compiler scans also detect new headers earlier in an include search path." style="text;html=0;align=center;verticalAlign=top;fontSize=16;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="350" y="534" width="500" height="21" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

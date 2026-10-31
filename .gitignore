@@ -1,0 +1,9 @@
+build/
+.cppbuild/
+**/.cppbuild/
+study/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*

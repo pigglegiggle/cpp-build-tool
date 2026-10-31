@@ -1,0 +1,11 @@
+# Project settings precede targets. All arguments are quoted strings.
+compiler "clang++"
+flags "-std=c++17" "-O2" "-Wall" "-Wextra"
+includes "include"
+
+library "greeting"
+sources "src/greeting.cpp"
+
+program "hello"
+sources "src/main.cpp"
+depends "greeting"

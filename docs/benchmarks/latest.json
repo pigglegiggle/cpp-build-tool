@@ -1,0 +1,2434 @@
+{
+  "recorded_at": "2026-11-01T04:39:06.628005+07:00",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "binary_sha256": "2d487ac5125019ab3e2fd6ac937c45192a559614612b0406c0ee37c538b267ee",
+  "source_sha256": {
+    "src/process.cpp": "1eb95e047663151251fbb1478280486b20c7f8a63bf71ab9380925dd20c96709",
+    "src/project.cpp": "42a16ddb3522612529e1455b45b2ac03ec0b94ffb2f67baf0a2becd51aa58102",
+    "src/hash.cpp": "076daa124c66635559cad14a2fb4c46c283672c4417846d77bffda7a7ecbd00d",
+    "src/build.cpp": "4d96c1bf82318ac117935b64dcbe0c277205e883bd53697cca780e5656e9718b",
+    "src/main.cpp": "1d8502bce783f04bd62f3a02776fc602c1f8fea42e5c1b46b2ed80706728337e",
+    "include/cppbuild/hash.hpp": "b62d63e828fae5bf2785a8e1dc7018770243024e168c38876bf4d012ca61f4c9",
+    "include/cppbuild/build.hpp": "788a67dc9012f6a4c200c08c2fd0d2bda4ff9a2d2443f548fc8d7c94321ac44c",
+    "scripts/benchmark.py": "831c2f57e1145f7fa4059fe845e973635c71c5d34c3065bf366f8d26e9977b6a"
+  },
+  "method": "Three batches, each with a fresh full build followed by unchanged, leaf-header, shared-header and output-clean/cache-restore cases. 13 real translation units, 4 workers. Wall time includes CLI setup, tool hashing, dependency scanning, build actions and report persistence. Every executable result is checked. No make/Ninja comparison, cold filesystem cache control, CPU affinity or statistical confidence claim.",
+  "observations": [
+    {
+      "batch": 1,
+      "case": "full",
+      "wall_ms": 347.98016699642176,
+      "program_output": "93",
+      "compiled_sources": 13,
+      "report": {
+        "success": true,
+        "milliseconds": 342.816459,
+        "built": 14,
+        "restored": 0,
+        "up_to_date": 0,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 14,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 46.112375,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 46.108708,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 46.099875,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 46.102666,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 44.039708,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 43.98725,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 43.985291,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 43.981583,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 45.398125,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 45.394916,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 45.398958,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 45.34425,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 111.493125,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 33.641417,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 1,
+      "case": "unchanged",
+      "wall_ms": 182.11341700225603,
+      "program_output": "93",
+      "compiled_sources": 0,
+      "report": {
+        "success": true,
+        "milliseconds": 172.230917,
+        "built": 0,
+        "restored": 0,
+        "up_to_date": 14,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 0,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 31.652458,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 31.639833,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 31.625083,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 31.61625,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.126584,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.125708,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.126125,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.130958,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.626083,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.625167,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.6295,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.620875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 26.173667,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 0.62275,
+            "dependency_scans": 0,
+            "build_commands": 0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 1,
+      "case": "leaf_header",
+      "wall_ms": 188.10295799630694,
+      "program_output": "97",
+      "compiled_sources": 1,
+      "report": {
+        "success": true,
+        "milliseconds": 184.477709,
+        "built": 2,
+        "restored": 0,
+        "up_to_date": 12,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 2,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 45.461875,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.266708,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.258708,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.260916,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.770458,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.766083,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.767709,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.199834,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.203,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.198875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 16.347167,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 16.965625,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 29.983875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 34.377875,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 1,
+      "case": "shared_header",
+      "wall_ms": 288.84900000412017,
+      "program_output": "133",
+      "compiled_sources": 12,
+      "report": {
+        "success": true,
+        "milliseconds": 279.455583,
+        "built": 13,
+        "restored": 0,
+        "up_to_date": 1,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 13,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 60.6465,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 60.631708,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 60.620833,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 60.6145,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 42.826583,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 42.825666,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 42.826459,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 42.829416,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 45.079542,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 45.078625,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 45.076833,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 45.079583,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 26.542542,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 30.687875,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 1,
+      "case": "cache_restore",
+      "wall_ms": 182.19404200499412,
+      "program_output": "133",
+      "compiled_sources": 0,
+      "report": {
+        "success": true,
+        "milliseconds": 174.909084,
+        "built": 0,
+        "restored": 14,
+        "up_to_date": 0,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 0,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 29.442292,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 29.426042,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 29.416541,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 29.409125,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 22.265083,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 22.263041,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 22.26325,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 22.2595,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 20.152416,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 20.142709,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 20.001541,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 20.140667,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 31.907667,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 1.343542,
+            "dependency_scans": 0,
+            "build_commands": 0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 2,
+      "case": "full",
+      "wall_ms": 532.6550840036361,
+      "program_output": "93",
+      "compiled_sources": 13,
+      "report": {
+        "success": true,
+        "milliseconds": 526.586084,
+        "built": 14,
+        "restored": 0,
+        "up_to_date": 0,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 14,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 68.429,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 68.093125,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 68.087625,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 68.08575,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 95.799042,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 49.502834,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 49.506209,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 49.498959,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 99.069667,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 142.5205,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 142.51675,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 96.224583,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 143.8035,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 88.099959,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 2,
+      "case": "unchanged",
+      "wall_ms": 308.4422079991782,
+      "program_output": "93",
+      "compiled_sources": 0,
+      "report": {
+        "success": true,
+        "milliseconds": 298.940583,
+        "built": 0,
+        "restored": 0,
+        "up_to_date": 14,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 0,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 82.037625,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 28.444458,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 29.814291,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 78.9855,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 20.431166,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 70.000833,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.546792,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 67.845917,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 67.497,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 15.8465,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 38.99875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 37.08775,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 86.969,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 0.915333,
+            "dependency_scans": 0,
+            "build_commands": 0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 2,
+      "case": "leaf_header",
+      "wall_ms": 254.96454200037988,
+      "program_output": "97",
+      "compiled_sources": 1,
+      "report": {
+        "success": true,
+        "milliseconds": 250.85725,
+        "built": 2,
+        "restored": 0,
+        "up_to_date": 12,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 2,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 47.371958,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 23.834417,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 23.819917,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 23.819916,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 70.324209,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 70.331375,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.306916,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 17.128958,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 15.675708,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 16.503917,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 15.477209,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 16.611541,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 76.796875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 32.9775,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 2,
+      "case": "shared_header",
+      "wall_ms": 399.96925000014016,
+      "program_output": "133",
+      "compiled_sources": 12,
+      "report": {
+        "success": true,
+        "milliseconds": 392.201459,
+        "built": 13,
+        "restored": 0,
+        "up_to_date": 1,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 13,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 68.919208,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 119.58875,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 119.615958,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 68.73825,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 40.306583,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 40.160084,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 39.363666,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 39.365,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 39.000834,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 38.909542,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 91.161333,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 91.160875,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 26.012666,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 85.5855,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 2,
+      "case": "cache_restore",
+      "wall_ms": 181.6603750048671,
+      "program_output": "133",
+      "compiled_sources": 0,
+      "report": {
+        "success": true,
+        "milliseconds": 176.885666,
+        "built": 0,
+        "restored": 14,
+        "up_to_date": 0,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 0,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 31.904209,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 31.884917,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 31.871166,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 31.865709,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 23.29625,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 23.294916,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 23.294375,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 23.283125,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 19.966291,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 19.848334,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 19.959375,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 19.961167,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 31.485416,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 1.342709,
+            "dependency_scans": 0,
+            "build_commands": 0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 3,
+      "case": "full",
+      "wall_ms": 404.0153339956305,
+      "program_output": "93",
+      "compiled_sources": 13,
+      "report": {
+        "success": true,
+        "milliseconds": 398.800958,
+        "built": 14,
+        "restored": 0,
+        "up_to_date": 0,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 14,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 55.027084,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 105.945792,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 105.93275,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 106.1165,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 35.728916,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 95.928917,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 106.093917,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 106.117208,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 105.93825,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 37.378333,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 87.5165,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 37.1045,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 58.678042,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "no valid prior state",
+            "error": "",
+            "milliseconds": 32.862833,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 3,
+      "case": "unchanged",
+      "wall_ms": 178.40795799565967,
+      "program_output": "93",
+      "compiled_sources": 0,
+      "report": {
+        "success": true,
+        "milliseconds": 171.996,
+        "built": 0,
+        "restored": 0,
+        "up_to_date": 14,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 0,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 33.469167,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 33.458625,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 33.444417,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 33.42625,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.897375,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.893541,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.893542,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 22.893208,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 20.4955,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 20.494,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 20.498375,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 20.404083,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 26.438875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 0.587917,
+            "dependency_scans": 0,
+            "build_commands": 0
+          }
+        ]
+      }
+    },
+    {
+      "batch": 3,
+      "case": "leaf_header",
+      "wall_ms": 295.90483300125925,
+      "program_output": "97",
+      "compiled_sources": 1,
+      "report": {
+        "success": true,
+        "milliseconds": 291.802833,
+        "built": 2,
+        "restored": 0,
+        "up_to_date": 12,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 2,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 45.725833,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 21.7255,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 21.71475,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 21.715667,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.807541,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.807167,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 19.811417,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 21.210875,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 21.21525,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 21.204042,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.876292,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 18.3985,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 82.05375,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 85.1225,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 3,
+      "case": "shared_header",
+      "wall_ms": 459.95024999865564,
+      "program_output": "133",
+      "compiled_sources": 12,
+      "report": {
+        "success": true,
+        "milliseconds": 451.969,
+        "built": 13,
+        "restored": 0,
+        "up_to_date": 1,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 13,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 61.369125,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 61.110459,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 61.343875,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 61.366625,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 44.404459,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 44.166083,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 144.919833,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 94.00325,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 90.643334,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 39.535375,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 138.086291,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 137.033625,
+            "dependency_scans": 1,
+            "build_commands": 1
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "up_to_date",
+            "reason": "inputs, command, environment and output content match",
+            "error": "",
+            "milliseconds": 77.290958,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "built",
+            "reason": "inputs, command, tool or environment changed",
+            "error": "",
+            "milliseconds": 84.65725,
+            "dependency_scans": 0,
+            "build_commands": 1
+          }
+        ]
+      }
+    },
+    {
+      "batch": 3,
+      "case": "cache_restore",
+      "wall_ms": 181.6062919970136,
+      "program_output": "133",
+      "compiled_sources": 0,
+      "report": {
+        "success": true,
+        "milliseconds": 174.827625,
+        "built": 0,
+        "restored": 14,
+        "up_to_date": 0,
+        "failed": 0,
+        "blocked": 0,
+        "dependency_scans": 13,
+        "build_commands": 0,
+        "peak_workers": 4,
+        "actions": [
+          {
+            "id": "compile:src/part0.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/27c51f5976cc7f26c2b4f7dac8f95849d73d87a311a67249f566055450ab296a.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 28.791458,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part1.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/dccb6e74f1865328a40b3d7024730887348b9eacfcd2f9b107a6e4c3af7b3383.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 28.779083,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part2.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/bf22209bd22f6b58e83d36f8a86d6d48894551e9a586c96951705a1b69037fb5.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 28.768959,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part3.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/7de246f0090548bb91e47703ecc707ab7d1a35b7e51d969e6f80338e1581854c.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 28.755416,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part4.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/42a6c77d28addfb764dac1ef2062bcb67d95274e247cee9449287866a97aacb8.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.572292,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part5.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/d14b19a4c150efea85573c1aa89a865b43905e216ab96f971177628a98b1dd41.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.428125,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part6.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/cde5d2d822f806d4077182637da2e404a07bf3e9b99eeb86c26fef813c91cfa8.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.567084,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part7.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/56df6a783c763e8f0251fc6591ff873ac1b9d470fa76d84900fa078ad0c21b9b.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.553208,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part8.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/e94485627a54beb4b976cc31d928ecf375cf6d6bc1d339d4eea92744116aaea1.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.25575,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part9.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5665424c7968b211f7961f8a9f15f2839f286528cd9c2bc3163f11278609e739.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.494125,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part10.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/43709c713a04c1298a4c84a644f3c3aa5f677896be08bc4a627e783fb246e7ae.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 21.61125,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/part11.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/5fe96d228bf09d47c9ad4735bf046e14d65ba547b49a96084fee94ef59e75d00.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 20.972041,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "compile:src/main.cpp",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/objects/4385e106767b6a5534548356f10317c5063dadfbd39ee3666c920e00e515bcf7.o",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 33.069792,
+            "dependency_scans": 1,
+            "build_commands": 0
+          },
+          {
+            "id": "link:fixture",
+            "output": "/private/var/folders/0q/4kv8hz6516n5mnf5l3ff9bqw0000gn/T/cppbuild-benchmark-m7j08dr9/.cppbuild/bin/fixture",
+            "status": "restored",
+            "reason": "verified action cache hit",
+            "error": "",
+            "milliseconds": 1.373958,
+            "dependency_scans": 0,
+            "build_commands": 0
+          }
+        ]
+      }
+    }
+  ]
+}
