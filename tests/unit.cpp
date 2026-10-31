@@ -15,16 +15,17 @@
 
 namespace {
 unsigned checks = 0;
-void check(bool condition, const std::string &message) {
+void check(bool condition, const std::string& message) {
     ++checks;
-    if (!condition)
+    if (!condition) {
         throw std::runtime_error(message);
+    }
 }
-template <class Function> void rejects(Function function, const std::string &message) {
+template <class Function> void rejects(Function function, const std::string& message) {
     bool rejected = false;
     try {
         function();
-    } catch (const std::exception &) {
+    } catch (const std::exception&) {
         rejected = true;
     }
     check(rejected, message);
@@ -39,8 +40,9 @@ void hashes() {
               "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0",
           "multi-block SHA-256");
     cppbuild::Sha256 chunks;
-    for (unsigned i = 0; i < 1000; ++i)
+    for (unsigned i = 0; i < 1000; ++i) {
         chunks.update(std::string(1000, 'a'));
+    }
     check(chunks.finish() == cppbuild::hash(std::string(1000000, 'a')), "incremental hash updates");
 }
 void graphs() {
@@ -49,25 +51,33 @@ void graphs() {
         std::vector<cppbuild::Node> nodes(40);
         for (std::size_t i = 0; i < nodes.size(); ++i) {
             nodes[i].id = std::to_string(i);
-            for (std::size_t j = 0; j < i; ++j)
-                if (random() % 13 == 0)
+            for (std::size_t j = 0; j < i; ++j) {
+                if (random() % 13 == 0) {
                     nodes[i].dependencies.push_back(j);
+                }
+            }
         }
         auto order = cppbuild::topological_order(nodes);
         std::vector<std::size_t> positions(nodes.size());
-        for (std::size_t i = 0; i < order.size(); ++i)
+        for (std::size_t i = 0; i < order.size(); ++i) {
             positions[order[i]] = i;
-        for (std::size_t i = 0; i < nodes.size(); ++i)
-            for (auto d : nodes[i].dependencies)
+        }
+        for (std::size_t i = 0; i < nodes.size(); ++i) {
+            for (auto d : nodes[i].dependencies) {
                 check(positions[d] < positions[i], "topological edge ordering");
+            }
+        }
         std::vector<std::atomic<bool>> done(nodes.size());
-        for (auto &value : done)
+        for (auto& value : done) {
             value = false;
+        }
         std::atomic<bool> stop{false}, violation{false};
         auto result = cppbuild::schedule(nodes, {4, false}, stop, [&](std::size_t id) {
-            for (auto d : nodes[id].dependencies)
-                if (!done[d])
+            for (auto d : nodes[id].dependencies) {
+                if (!done[d]) {
                     violation = true;
+                }
+            }
             done[id] = true;
             cppbuild::ActionResult action;
             action.status = "built";
@@ -75,17 +85,26 @@ void graphs() {
         });
         check(result.success && !violation, "scheduler respects dependencies");
         check(result.peak_workers <= 4, "worker limit");
-        for (const auto &value : done)
+        for (const auto& value : done) {
             check(value, "all scheduled actions complete");
+        }
     }
     std::vector<cppbuild::Node> cycle(2);
     cycle[0].id = "a";
     cycle[1].id = "b";
     cycle[0].dependencies = {1};
     cycle[1].dependencies = {0};
-    rejects([&] { cppbuild::topological_order(cycle); }, "cycles rejected");
+    rejects(
+        [&] {
+            cppbuild::topological_order(cycle);
+        },
+        "cycles rejected");
     cycle[0].dependencies = {2};
-    rejects([&] { cppbuild::topological_order(cycle); }, "invalid edge rejected");
+    rejects(
+        [&] {
+            cppbuild::topological_order(cycle);
+        },
+        "invalid edge rejected");
 }
 void failures() {
     std::vector<cppbuild::Node> nodes(5);
@@ -112,7 +131,11 @@ void failures() {
     check(!cancelled.success && cancelled.peak_workers == 0,
           "pre-cancelled graph launches nothing");
     stop = false;
-    rejects([&] { cppbuild::schedule(nodes, {0, false}, stop, execute); }, "invalid jobs rejected");
+    rejects(
+        [&] {
+            cppbuild::schedule(nodes, {0, false}, stop, execute);
+        },
+        "invalid jobs rejected");
 }
 void parallel_workers() {
     std::vector<cppbuild::Node> nodes(4);
@@ -124,8 +147,11 @@ void parallel_workers() {
         std::unique_lock<std::mutex> lock(mutex);
         ++entered;
         changed.notify_all();
-        if (!changed.wait_for(lock, std::chrono::seconds(3), [&] { return entered == 4; }))
+        if (!changed.wait_for(lock, std::chrono::seconds(3), [&] {
+                return entered == 4;
+            })) {
             throw std::runtime_error("workers failed to overlap");
+        }
         cppbuild::ActionResult action;
         action.status = "built";
         return action;
@@ -151,7 +177,11 @@ void dependency_files() {
         std::ofstream output(path);
         output << "other: ignored";
     }
-    rejects([&] { cppbuild::read_dependencies(path); }, "invalid dependency target rejected");
+    rejects(
+        [&] {
+            cppbuild::read_dependencies(path);
+        },
+        "invalid dependency target rejected");
     cppbuild::fs::remove(path);
     check(cppbuild::json_string("a\n\"b\\c") == "\"a\\u000a\\\"b\\\\c\"", "JSON escaping");
 }
@@ -165,7 +195,7 @@ int main() {
         dependency_files();
         std::cout << checks << " checks passed; graph seed 20261101\n";
         return 0;
-    } catch (const std::exception &error) {
+    } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';
         return 1;
     }

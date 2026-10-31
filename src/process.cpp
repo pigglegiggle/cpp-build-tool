@@ -12,10 +12,10 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-extern char **environ;
+extern char** environ;
 namespace cppbuild {
 namespace {
-std::runtime_error system_error(const std::string &context) {
+std::runtime_error system_error(const std::string& context) {
     return std::runtime_error(context + ": " + std::strerror(errno));
 }
 std::mutex launches;
@@ -23,15 +23,17 @@ class Fd {
   public:
     explicit Fd(int value = -1) : value_(value) {}
     ~Fd() {
-        if (value_ >= 0)
+        if (value_ >= 0) {
             ::close(value_);
+        }
     }
     int get() const {
         return value_;
     }
     void close() {
-        if (value_ >= 0)
+        if (value_ >= 0) {
             ::close(value_);
+        }
         value_ = -1;
     }
 
@@ -39,56 +41,68 @@ class Fd {
     int value_;
 };
 } // namespace
-fs::path executable(const std::string &name) {
-    auto usable = [](const fs::path &file) {
+fs::path executable(const std::string& name) {
+    auto usable = [](const fs::path& file) {
         return fs::is_regular_file(file) && ::access(file.c_str(), X_OK) == 0;
     };
     if (name.find('/') != std::string::npos) {
-        if (usable(name))
+        if (usable(name)) {
             return fs::absolute(name).lexically_normal();
+        }
         throw std::runtime_error("executable not found: " + name);
     }
-    const char *environment = std::getenv("PATH");
+    const char* environment = std::getenv("PATH");
     std::string paths = environment ? environment : "/usr/bin:/bin";
     std::size_t offset = 0;
     while (offset <= paths.size()) {
         auto end = paths.find(':', offset);
-        if (end == std::string::npos)
+        if (end == std::string::npos) {
             end = paths.size();
+        }
         auto directory = paths.substr(offset, end - offset);
         auto file = fs::path(directory.empty() ? "." : directory) / name;
-        if (usable(file))
+        if (usable(file)) {
             return fs::absolute(file).lexically_normal();
-        if (end == paths.size())
+        }
+        if (end == paths.size()) {
             break;
+        }
         offset = end + 1;
     }
     throw std::runtime_error("executable not found in PATH: " + name);
 }
-ProcessResult process(const std::vector<std::string> &arguments, std::atomic<bool> &stop) {
-    if (arguments.empty())
+ProcessResult process(const std::vector<std::string>& arguments, std::atomic<bool>& stop) {
+    if (arguments.empty()) {
         throw std::runtime_error("empty process command");
-    if (stop)
+    }
+    if (stop) {
         return {130, "cancelled before process launch", false};
+    }
     std::unique_lock<std::mutex> launch(launches);
     int descriptors[2];
-    if (::pipe(descriptors) < 0)
+    if (::pipe(descriptors) < 0) {
         throw system_error("create output pipe");
+    }
     Fd reader(descriptors[0]), writer(descriptors[1]);
-    for (int fd : descriptors)
-        if (::fcntl(fd, F_SETFD, FD_CLOEXEC) < 0)
+    for (int fd : descriptors) {
+        if (::fcntl(fd, F_SETFD, FD_CLOEXEC) < 0) {
             throw system_error("mark pipe close-on-exec");
-    if (::fcntl(reader.get(), F_SETFL, O_NONBLOCK) < 0)
+        }
+    }
+    if (::fcntl(reader.get(), F_SETFL, O_NONBLOCK) < 0) {
         throw system_error("mark output nonblocking");
-    std::vector<char *> argv;
-    for (const auto &argument : arguments)
-        argv.push_back(const_cast<char *>(argument.c_str()));
+    }
+    std::vector<char*> argv;
+    for (const auto& argument : arguments) {
+        argv.push_back(const_cast<char*>(argument.c_str()));
+    }
     argv.push_back(nullptr);
     posix_spawn_file_actions_t actions;
     posix_spawnattr_t attributes;
     int error = posix_spawn_file_actions_init(&actions);
-    if (error)
+    if (error) {
         throw std::runtime_error("initialize spawn actions: " + std::string(std::strerror(error)));
+    }
     error = posix_spawnattr_init(&attributes);
     if (error) {
         posix_spawn_file_actions_destroy(&actions);
@@ -99,18 +113,24 @@ ProcessResult process(const std::vector<std::string> &arguments, std::atomic<boo
         posix_spawnattr_destroy(&attributes);
     };
     error = posix_spawn_file_actions_addopen(&actions, STDIN_FILENO, "/dev/null", O_RDONLY, 0);
-    if (!error)
+    if (!error) {
         error = posix_spawn_file_actions_adddup2(&actions, writer.get(), STDOUT_FILENO);
-    if (!error)
+    }
+    if (!error) {
         error = posix_spawn_file_actions_adddup2(&actions, writer.get(), STDERR_FILENO);
-    if (!error)
+    }
+    if (!error) {
         error = posix_spawn_file_actions_addclose(&actions, reader.get());
-    if (!error)
+    }
+    if (!error) {
         error = posix_spawn_file_actions_addclose(&actions, writer.get());
-    if (!error)
+    }
+    if (!error) {
         error = posix_spawnattr_setpgroup(&attributes, 0);
-    if (!error)
+    }
+    if (!error) {
         error = posix_spawnattr_setflags(&attributes, POSIX_SPAWN_SETPGROUP);
+    }
     if (error) {
         cleanup();
         throw std::runtime_error("configure child process: " + std::string(std::strerror(error)));
@@ -121,8 +141,9 @@ ProcessResult process(const std::vector<std::string> &arguments, std::atomic<boo
     cleanup();
     writer.close();
     launch.unlock();
-    if (error)
+    if (error) {
         throw std::runtime_error("launch " + arguments.front() + ": " + std::strerror(error));
+    }
     ProcessResult result;
     constexpr std::size_t limit = 1024 * 1024;
     bool exited = false, eof = false, terminated = false, killed = false;
@@ -142,8 +163,9 @@ ProcessResult process(const std::vector<std::string> &arguments, std::atomic<boo
             }
             pollfd ready{eof ? -1 : reader.get(), POLLIN, 0};
             auto count = ::poll(&ready, 1, 50);
-            if (count < 0 && errno != EINTR)
+            if (count < 0 && errno != EINTR) {
                 throw system_error("poll child output");
+            }
             std::array<char, 8192> buffer{};
             std::size_t drained = 0;
             while (!eof && drained < 262144) {
@@ -153,23 +175,26 @@ ProcessResult process(const std::vector<std::string> &arguments, std::atomic<boo
                     auto keep = std::min<std::size_t>(static_cast<std::size_t>(size),
                                                       limit - result.output.size());
                     result.output.append(buffer.data(), keep);
-                    if (keep < static_cast<std::size_t>(size))
+                    if (keep < static_cast<std::size_t>(size)) {
                         result.truncated = true;
-                } else if (size == 0)
+                    }
+                } else if (size == 0) {
                     eof = true;
-                else if (errno == EINTR)
+                } else if (errno == EINTR) {
                     continue;
-                else if (errno == EAGAIN || errno == EWOULDBLOCK)
+                } else if (errno == EAGAIN || errno == EWOULDBLOCK) {
                     break;
-                else
+                } else {
                     throw system_error("read child output");
+                }
             }
             if (!exited) {
                 auto waited = ::waitpid(child, &status, WNOHANG);
-                if (waited == child)
+                if (waited == child) {
                     exited = true;
-                else if (waited < 0 && errno != EINTR)
+                } else if (waited < 0 && errno != EINTR) {
                     throw system_error("wait for child");
+                }
             }
         }
     } catch (...) {

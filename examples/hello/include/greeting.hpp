@@ -1,2 +1,2 @@
 #pragma once
-const char *greeting();
+const char* greeting();

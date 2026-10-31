@@ -26,7 +26,7 @@ Manifest compiler commands are trusted executable code; no shell is used.
 )";
 }
 } // namespace
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     std::signal(SIGINT, stop);
     std::signal(SIGTERM, stop);
     try {
@@ -42,49 +42,59 @@ int main(int argc, char **argv) {
         for (int i = 2; i < argc; ++i) {
             std::string argument = argv[i];
             auto value = [&] {
-                if (++i >= argc)
+                if (++i >= argc) {
                     throw std::runtime_error("missing value for " + argument);
+                }
                 return std::string(argv[i]);
             };
-            if (argument == "--file")
+            if (argument == "--file") {
                 file = value();
-            else if (argument == "--jobs") {
+            } else if (argument == "--jobs") {
                 auto count = value();
-                if (count.empty() || !std::all_of(count.begin(), count.end(),
-                                                  [](char c) { return c >= '0' && c <= '9'; }))
+                if (count.empty() || !std::all_of(count.begin(), count.end(), [](char c) {
+                        return c >= '0' && c <= '9';
+                    })) {
                     throw std::runtime_error("jobs must be an integer 1..32");
+                }
                 auto parsed = std::stoul(count);
-                if (parsed < 1 || parsed > 32)
+                if (parsed < 1 || parsed > 32) {
                     throw std::runtime_error("jobs must be 1..32");
+                }
                 options.jobs = static_cast<unsigned>(parsed);
-            } else if (argument == "--keep-going")
+            } else if (argument == "--keep-going") {
                 options.keep_going = true;
-            else if (argument == "--json")
+            } else if (argument == "--json") {
                 json = true;
-            else if (argument == "--explain")
+            } else if (argument == "--explain") {
                 explain = true;
-            else if (argument == "--all")
+            } else if (argument == "--all") {
                 all = true;
-            else if (argument == "--help") {
+            } else if (argument == "--help") {
                 help();
                 return 0;
-            } else if (!argument.empty() && argument[0] != '-' && target.empty())
+            } else if (!argument.empty() && argument[0] != '-' && target.empty()) {
                 target = argument;
-            else
+            } else {
                 throw std::runtime_error("unknown or repeated argument: " + argument);
+            }
         }
-        if (command != "build" && command != "graph" && command != "clean")
+        if (command != "build" && command != "graph" && command != "clean") {
             throw std::runtime_error("unknown command: " + command);
-        if (all && command != "clean")
+        }
+        if (all && command != "clean") {
             throw std::runtime_error("--all is a clean option; use target 'all' for builds");
-        if (command == "clean" && (!target.empty() || json || explain || options.keep_going))
+        }
+        if (command == "clean" && (!target.empty() || json || explain || options.keep_going)) {
             throw std::runtime_error("unsupported clean option");
-        if (command != "build" && (explain || options.keep_going))
+        }
+        if (command != "build" && (explain || options.keep_going)) {
             throw std::runtime_error("--explain/--keep-going require build");
+        }
         if (command == "clean") {
             auto manifest = cppbuild::fs::canonical(file);
-            if (!cppbuild::fs::is_regular_file(manifest))
+            if (!cppbuild::fs::is_regular_file(manifest)) {
                 throw std::runtime_error("manifest must be a regular file");
+            }
             // Cleaning needs the workspace location, not valid sources or build instructions.
             cppbuild::Workspace workspace(manifest.parent_path());
             workspace.clean(all);
@@ -101,24 +111,26 @@ int main(int argc, char **argv) {
         }
         cppbuild::Workspace workspace(project.root);
         auto report = cppbuild::build(project, nodes, workspace, options, stopped);
-        if (json)
+        if (json) {
             std::cout << cppbuild::report_json(nodes, report);
-        else {
+        } else {
             for (std::size_t i = 0; i < nodes.size(); ++i) {
-                const auto &action = report.actions[i];
+                const auto& action = report.actions[i];
                 std::cout << action.status << "  " << nodes[i].id;
-                if (explain && !action.reason.empty())
+                if (explain && !action.reason.empty()) {
                     std::cout << " — " << action.reason;
+                }
                 std::cout << '\n';
-                if (!action.error.empty())
+                if (!action.error.empty()) {
                     std::cerr << nodes[i].id << ": " << action.error << '\n';
+                }
             }
             std::cout << (report.success ? "Build succeeded" : "Build failed") << " in "
                       << report.milliseconds << " ms; peak workers " << report.peak_workers << '\n';
             std::cout << "Report: " << (workspace.path / "last-build.json") << '\n';
         }
         return stopped ? 130 : report.success ? 0 : 1;
-    } catch (const std::exception &error) {
+    } catch (const std::exception& error) {
         std::cerr << "cppbuild: " << error.what() << '\n';
         return stopped ? 130 : 1;
     }

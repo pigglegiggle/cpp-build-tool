@@ -11,11 +11,12 @@
 
 namespace cppbuild {
 namespace {
-void require(bool condition, const std::string &message) {
-    if (!condition)
+void require(bool condition, const std::string& message) {
+    if (!condition) {
         throw std::runtime_error(message);
+    }
 }
-fs::path local_path(const Project &project, const std::string &value) {
+fs::path local_path(const Project& project, const std::string& value) {
     require(!value.empty() && value.find_first_of("\r\n\t") == std::string::npos &&
                 value.find('\0') == std::string::npos,
             "invalid project path");
@@ -27,7 +28,7 @@ fs::path local_path(const Project &project, const std::string &value) {
             "path escapes project or uses reserved .cppbuild: " + value);
     return result;
 }
-std::vector<std::string> arguments(std::istringstream &line) {
+std::vector<std::string> arguments(std::istringstream& line) {
     std::vector<std::string> result;
     while (line >> std::ws && line.peek() != std::char_traits<char>::eof() && line.peek() != '#') {
         require(line.peek() == '"', "arguments must use double quotes");
@@ -40,8 +41,8 @@ std::vector<std::string> arguments(std::istringstream &line) {
     }
     return result;
 }
-void validate_flags(const std::vector<std::string> &flags) {
-    for (const auto &flag : flags) {
+void validate_flags(const std::vector<std::string>& flags) {
+    for (const auto& flag : flags) {
         require(!flag.empty(), "empty compiler flag");
         require(flag[0] != '@' && flag != "-c" && flag.rfind("-o", 0) != 0 &&
                     flag.rfind("-M", 0) != 0,
@@ -49,14 +50,14 @@ void validate_flags(const std::vector<std::string> &flags) {
     }
 }
 } // namespace
-Project read_project(const fs::path &file) {
+Project read_project(const fs::path& file) {
     require(fs::is_regular_file(file) && fs::file_size(file) <= 1024 * 1024,
             "manifest must be a regular file of at most 1 MiB");
     Project project;
     project.root = fs::canonical(file).parent_path();
     std::ifstream input(file);
     require(static_cast<bool>(input), "cannot open manifest");
-    Target *current = nullptr;
+    Target* current = nullptr;
     std::set<std::string> directives;
     std::string text;
     unsigned number = 0;
@@ -65,14 +66,15 @@ Project read_project(const fs::path &file) {
         try {
             std::istringstream line(text);
             line >> std::ws;
-            if (line.eof() || line.peek() == '#')
+            if (line.eof() || line.peek() == '#') {
                 continue;
+            }
             std::string directive;
             line >> directive;
             auto values = arguments(line);
             if (directive == "program" || directive == "library") {
                 require(values.size() == 1, "target needs one name");
-                const auto &name = values[0];
+                const auto& name = values[0];
                 require(!name.empty() && name.size() <= 64 &&
                             std::isalpha(static_cast<unsigned char>(name[0])),
                         "invalid target name");
@@ -82,7 +84,9 @@ Project read_project(const fs::path &file) {
                                     }),
                         "invalid target name");
                 require(std::none_of(project.targets.begin(), project.targets.end(),
-                                     [&](const Target &t) { return t.name == name; }),
+                                     [&](const Target& t) {
+                                         return t.name == name;
+                                     }),
                         "duplicate target: " + name);
                 project.targets.push_back({name, directive == "library", {}, {}});
                 current = &project.targets.back();
@@ -90,11 +94,11 @@ Project read_project(const fs::path &file) {
             } else if (directive == "sources" || directive == "depends") {
                 require(current != nullptr && !values.empty(),
                         "sources/depends must follow a target and contain entries");
-                if (directive == "depends")
+                if (directive == "depends") {
                     current->dependencies.insert(current->dependencies.end(), values.begin(),
                                                  values.end());
-                else
-                    for (const auto &value : values) {
+                } else {
+                    for (const auto& value : values) {
                         auto source = local_path(project, value);
                         require(fs::is_regular_file(source), "source file not found: " + value);
                         require(source.extension() == ".cpp" || source.extension() == ".cc" ||
@@ -102,6 +106,7 @@ Project read_project(const fs::path &file) {
                                 "C++ sources must use .cpp, .cc or .cxx");
                         current->sources.push_back(source);
                     }
+                }
             } else {
                 require(current == nullptr, "project settings must precede target declarations");
                 require(directives.insert(directive).second,
@@ -114,15 +119,16 @@ Project read_project(const fs::path &file) {
                     validate_flags(values);
                     (directive == "flags" ? project.flags : project.link_flags) = values;
                 } else if (directive == "includes") {
-                    for (const auto &value : values) {
+                    for (const auto& value : values) {
                         auto path = local_path(project, value);
                         require(fs::is_directory(path), "include directory not found: " + value);
                         project.includes.push_back(path);
                     }
-                } else
+                } else {
                     throw std::runtime_error("unknown directive: " + directive);
+                }
             }
-        } catch (const std::exception &error) {
+        } catch (const std::exception& error) {
             throw std::runtime_error(file.string() + ":" + std::to_string(number) + ": " +
                                      error.what());
         }
@@ -130,15 +136,17 @@ Project read_project(const fs::path &file) {
     require(!input.bad(), "manifest read failed");
     require(!project.targets.empty(), "manifest needs at least one target");
     std::set<fs::path> all_sources;
-    for (const auto &target : project.targets) {
+    for (const auto& target : project.targets) {
         require(!target.sources.empty(), "target has no sources: " + target.name);
         std::set<fs::path> unique(target.sources.begin(), target.sources.end());
         require(unique.size() == target.sources.size(),
                 "duplicate source in target: " + target.name);
         all_sources.insert(unique.begin(), unique.end());
-        for (const auto &dependency : target.dependencies) {
-            auto found = std::find_if(project.targets.begin(), project.targets.end(),
-                                      [&](const Target &t) { return t.name == dependency; });
+        for (const auto& dependency : target.dependencies) {
+            auto found =
+                std::find_if(project.targets.begin(), project.targets.end(), [&](const Target& t) {
+                    return t.name == dependency;
+                });
             require(found != project.targets.end(), "unknown dependency: " + dependency);
             require(found->library,
                     "only static libraries may be target dependencies: " + dependency);
@@ -147,7 +155,7 @@ Project read_project(const fs::path &file) {
     require(all_sources.size() <= 4096, "at most 4096 distinct source files");
     return project;
 }
-std::vector<fs::path> read_dependencies(const fs::path &file) {
+std::vector<fs::path> read_dependencies(const fs::path& file) {
     require(fs::file_size(file) <= 8 * 1024 * 1024, "dependency file exceeds 8 MiB");
     std::ifstream input(file, std::ios::binary);
     require(static_cast<bool>(input), "dependency file missing");
@@ -165,8 +173,9 @@ std::vector<fs::path> read_dependencies(const fs::path &file) {
         char c = text[i];
         if (c == '\\') {
             require(++i < text.size(), "dangling dependency escape");
-            if (text[i] == '\n')
+            if (text[i] == '\n') {
                 continue;
+            }
             if (text[i] == '\r' && i + 1 < text.size() && text[i + 1] == '\n') {
                 ++i;
                 continue;
@@ -175,16 +184,17 @@ std::vector<fs::path> read_dependencies(const fs::path &file) {
         } else if (c == '$' && i + 1 < text.size() && text[i + 1] == '$') {
             word += '$';
             ++i;
-        } else if (std::isspace(static_cast<unsigned char>(c)))
+        } else if (std::isspace(static_cast<unsigned char>(c))) {
             flush();
-        else
+        } else {
             word += c;
+        }
     }
     flush();
     require(!paths.empty(), "compiler reported no dependencies");
     return {paths.begin(), paths.end()};
 }
-std::vector<std::size_t> topological_order(const std::vector<Node> &nodes) {
+std::vector<std::size_t> topological_order(const std::vector<Node>& nodes) {
     std::vector<std::vector<std::size_t>> users(nodes.size());
     std::vector<std::size_t> remaining(nodes.size());
     for (std::size_t i = 0; i < nodes.size(); ++i) {
@@ -197,55 +207,68 @@ std::vector<std::size_t> topological_order(const std::vector<Node> &nodes) {
         }
     }
     std::priority_queue<std::size_t, std::vector<std::size_t>, std::greater<std::size_t>> ready;
-    for (std::size_t i = 0; i < nodes.size(); ++i)
-        if (!remaining[i])
+    for (std::size_t i = 0; i < nodes.size(); ++i) {
+        if (!remaining[i]) {
             ready.push(i);
+        }
+    }
     std::vector<std::size_t> result;
     while (!ready.empty()) {
         auto node = ready.top();
         ready.pop();
         result.push_back(node);
-        for (auto user : users[node])
-            if (--remaining[user] == 0)
+        for (auto user : users[node]) {
+            if (--remaining[user] == 0) {
                 ready.push(user);
+            }
+        }
     }
     if (result.size() != nodes.size()) {
         std::string message = "dependency cycle involving:";
-        for (std::size_t i = 0; i < nodes.size(); ++i)
-            if (remaining[i])
+        for (std::size_t i = 0; i < nodes.size(); ++i) {
+            if (remaining[i]) {
                 message += " " + nodes[i].id;
+            }
+        }
         throw std::runtime_error(message);
     }
     return result;
 }
-std::vector<Node> graph(const Project &project, const std::string &requested) {
+std::vector<Node> graph(const Project& project, const std::string& requested) {
     std::map<std::string, std::size_t> target_ids;
-    for (std::size_t i = 0; i < project.targets.size(); ++i)
+    for (std::size_t i = 0; i < project.targets.size(); ++i) {
         target_ids[project.targets[i].name] = i;
+    }
     std::vector<Node> target_graph;
-    for (const auto &target : project.targets) {
+    for (const auto& target : project.targets) {
         Node node;
         node.id = target.name;
         std::set<std::size_t> deps;
-        for (const auto &name : target.dependencies)
+        for (const auto& name : target.dependencies) {
             deps.insert(target_ids.at(name));
+        }
         node.dependencies = {deps.begin(), deps.end()};
         target_graph.push_back(std::move(node));
     }
     auto order = topological_order(target_graph);
     std::set<std::size_t> selected;
     std::function<void(std::size_t)> select = [&](std::size_t i) {
-        if (!selected.insert(i).second)
+        if (!selected.insert(i).second) {
             return;
-        for (auto d : target_graph[i].dependencies)
+        }
+        for (auto d : target_graph[i].dependencies) {
             select(d);
+        }
     };
-    if (requested == "all")
-        for (std::size_t i = 0; i < project.targets.size(); ++i)
+    if (requested == "all") {
+        for (std::size_t i = 0; i < project.targets.size(); ++i) {
             select(i);
-    else {
-        auto default_target = std::find_if(project.targets.begin(), project.targets.end(),
-                                           [](const Target &target) { return !target.library; });
+        }
+    } else {
+        auto default_target =
+            std::find_if(project.targets.begin(), project.targets.end(), [](const Target& target) {
+                return !target.library;
+            });
         auto name = requested.empty()
                         ? (default_target == project.targets.end() ? project.targets.front().name
                                                                    : default_target->name)
@@ -257,15 +280,15 @@ std::vector<Node> graph(const Project &project, const std::string &requested) {
     std::vector<Node> nodes;
     std::map<fs::path, std::size_t> objects;
     std::map<std::size_t, std::size_t> artifacts;
-    for (auto i : order)
+    for (auto i : order) {
         if (selected.count(i)) {
-            const auto &target = project.targets[i];
+            const auto& target = project.targets[i];
             Node artifact;
             artifact.id = (target.library ? "archive:" : "link:") + target.name;
             artifact.target = i;
             artifact.output = project.root / ".cppbuild" / (target.library ? "lib" : "bin") /
                               (target.library ? "lib" + target.name + ".a" : target.name);
-            for (const auto &source : target.sources) {
+            for (const auto& source : target.sources) {
                 if (!objects.count(source)) {
                     Node object;
                     object.id =
@@ -281,35 +304,40 @@ std::vector<Node> graph(const Project &project, const std::string &requested) {
             if (!target.library) {
                 std::set<std::size_t> closure;
                 std::function<void(std::size_t)> collect = [&](std::size_t id) {
-                    for (auto d : target_graph[id].dependencies)
-                        if (closure.insert(d).second)
+                    for (auto d : target_graph[id].dependencies) {
+                        if (closure.insert(d).second) {
                             collect(d);
+                        }
+                    }
                 };
                 collect(i);
                 // Link dependents before their static-library dependencies for one-pass linkers.
-                for (auto it = order.rbegin(); it != order.rend(); ++it)
-                    if (closure.count(*it))
+                for (auto it = order.rbegin(); it != order.rend(); ++it) {
+                    if (closure.count(*it)) {
                         artifact.dependencies.push_back(artifacts.at(*it));
+                    }
+                }
             }
             artifacts[i] = nodes.size();
             nodes.push_back(std::move(artifact));
         }
+    }
     topological_order(nodes);
     return nodes;
 }
-std::string json_string(const std::string &text) {
+std::string json_string(const std::string& text) {
     std::ostringstream output;
     output << '"';
     for (std::size_t i = 0; i < text.size(); ++i) {
         auto c = static_cast<unsigned char>(text[i]);
-        if (c == '"' || c == '\\')
+        if (c == '"' || c == '\\') {
             output << '\\' << c;
-        else if (c < 32)
+        } else if (c < 32) {
             output << "\\u00" << std::hex << std::setw(2) << std::setfill('0')
                    << static_cast<unsigned>(c) << std::dec;
-        else if (c < 128)
+        } else if (c < 128) {
             output << c;
-        else {
+        } else {
             unsigned length = c >= 0xc2 && c <= 0xdf   ? 2
                               : c >= 0xe0 && c <= 0xef ? 3
                               : c >= 0xf0 && c <= 0xf4 ? 4
@@ -326,24 +354,27 @@ std::string json_string(const std::string &text) {
             if (valid) {
                 output.write(text.data() + i, length);
                 i += length - 1;
-            } else
+            } else {
                 output << "\\ufffd";
+            }
         }
     }
     output << '"';
     return output.str();
 }
-std::string graph_json(const std::vector<Node> &nodes) {
+std::string graph_json(const std::vector<Node>& nodes) {
     std::ostringstream output;
     output << "{\"nodes\":[";
     for (std::size_t i = 0; i < nodes.size(); ++i) {
-        if (i)
+        if (i) {
             output << ',';
+        }
         output << "{\"id\":" << json_string(nodes[i].id)
                << ",\"output\":" << json_string(nodes[i].output.string()) << ",\"dependencies\":[";
         for (std::size_t j = 0; j < nodes[i].dependencies.size(); ++j) {
-            if (j)
+            if (j) {
                 output << ',';
+            }
             output << json_string(nodes[nodes[i].dependencies[j]].id);
         }
         output << "]}";
@@ -351,13 +382,14 @@ std::string graph_json(const std::vector<Node> &nodes) {
     output << "]}\n";
     return output.str();
 }
-std::string graph_dot(const std::vector<Node> &nodes) {
+std::string graph_dot(const std::vector<Node>& nodes) {
     std::ostringstream output;
     output << "digraph build {\n  rankdir=LR;\n";
-    for (const auto &node : nodes) {
+    for (const auto& node : nodes) {
         output << "  " << json_string(node.id) << ";\n";
-        for (auto d : node.dependencies)
+        for (auto d : node.dependencies) {
             output << "  " << json_string(nodes[d].id) << " -> " << json_string(node.id) << ";\n";
+        }
     }
     output << "}\n";
     return output.str();

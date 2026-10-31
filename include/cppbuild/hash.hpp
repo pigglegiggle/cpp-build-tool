@@ -20,5 +20,5 @@ class Sha256 {
     void compress();
 };
 std::string hash(std::string_view bytes);
-std::string hash_file(const std::filesystem::path &path);
+std::string hash_file(const std::filesystem::path& path);
 } // namespace cppbuild

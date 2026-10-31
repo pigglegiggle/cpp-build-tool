@@ -22,9 +22,11 @@ std::uint32_t rotate(std::uint32_t x, unsigned n) {
 } // namespace
 void Sha256::compress() {
     std::array<std::uint32_t, 64> words{};
-    for (unsigned i = 0; i < 16; i++)
-        for (unsigned j = 0; j < 4; j++)
+    for (unsigned i = 0; i < 16; i++) {
+        for (unsigned j = 0; j < 4; j++) {
             words[i] = (words[i] << 8) | block_[4 * i + j];
+        }
+    }
     for (unsigned i = 16; i < 64; i++) {
         auto a = words[i - 15], b = words[i - 2];
         words[i] = words[i - 16] + (rotate(a, 7) ^ rotate(a, 18) ^ (a >> 3)) + words[i - 7] +
@@ -73,13 +75,15 @@ std::string Sha256::finish() {
         used_ = 0;
     }
     std::fill(block_.begin() + used_, block_.begin() + 56, 0);
-    for (unsigned i = 0; i < 8; i++)
+    for (unsigned i = 0; i < 8; i++) {
         block_[63 - i] = static_cast<unsigned char>(bits >> (8 * i));
+    }
     compress();
     std::ostringstream output;
     output << std::hex << std::setfill('0');
-    for (auto word : state_)
+    for (auto word : state_) {
         output << std::setw(8) << word;
+    }
     return output.str();
 }
 std::string hash(std::string_view bytes) {
@@ -87,20 +91,23 @@ std::string hash(std::string_view bytes) {
     digest.update(bytes);
     return digest.finish();
 }
-std::string hash_file(const std::filesystem::path &path) {
-    if (!std::filesystem::is_regular_file(path))
+std::string hash_file(const std::filesystem::path& path) {
+    if (!std::filesystem::is_regular_file(path)) {
         throw std::runtime_error("not a regular file: " + path.string());
+    }
     std::ifstream input(path, std::ios::binary);
-    if (!input)
+    if (!input) {
         throw std::runtime_error("cannot read: " + path.string());
+    }
     Sha256 digest;
     std::array<char, 65536> buffer{};
     while (input) {
         input.read(buffer.data(), buffer.size());
         digest.update({buffer.data(), static_cast<std::size_t>(input.gcount())});
     }
-    if (input.bad())
+    if (input.bad()) {
         throw std::runtime_error("read failed: " + path.string());
+    }
     return digest.finish();
 }
 } // namespace cppbuild
